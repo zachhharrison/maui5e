@@ -7,6 +7,6 @@ public partial class AppShell
         InitializeComponent();
         
         Routing.RegisterRoute("ClassPage", typeof(ClassPage));
-        Routing.RegisterRoute("HomeCSharp", typeof(HomeCSharp));
+        Routing.RegisterRoute("HomeCSharp", typeof(HomePage));
     }
 }

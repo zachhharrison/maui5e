@@ -81,17 +81,17 @@ public class ClassPage : ContentPage
 
 public struct Data
 {
-    public Class Class { get; }
+    public Class Class { get; set; }
 }
 public struct Class
 {
     public string Name { get; set; }
-    public List<Subclasses> Subclasses {get;}
+    public List<Subclasses> Subclasses {get; set; }
 }
 
 public struct Subclasses
 {
     public string Name { get; set; }
     [JsonPropertyName("desc")]
-    public List<string> Description { get; }
+    public List<string> Description { get; set; }
 }

@@ -8,9 +8,9 @@
 
     <TabBar>
         <ShellContent
-            Title="HomeCSharp"
-            ContentTemplate="{DataTemplate local:HomeCSharp}"
-            Route="HomeCSharp" />
+            Title="Home Page"
+            ContentTemplate="{DataTemplate local:HomePage}"
+            Route="Home Page" />
         <ShellContent
             Title="Class Page"
             ContentTemplate="{DataTemplate local:ClassPage}"

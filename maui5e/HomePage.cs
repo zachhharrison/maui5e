@@ -2,10 +2,10 @@ using CommunityToolkit.Maui.Markup;
 
 namespace maui5e;
 
-public class HomeCSharp : ContentPage
+public class HomePage : ContentPage
 {
     private int _count;
-    public HomeCSharp()
+    public HomePage()
     {
         var scrollView = new ScrollView();
         var verticalStackLayout = new VerticalStackLayout

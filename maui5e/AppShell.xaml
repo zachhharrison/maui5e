@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="maui5e.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:maui5e"
+    FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent
+            Title="HomeCSharp"
+            ContentTemplate="{DataTemplate local:HomeCSharp}"
+            Route="HomeCSharp" />
+        <ShellContent
+            Title="Class Page"
+            ContentTemplate="{DataTemplate local:ClassPage}"
+            Route="ClassPage" />
+    </TabBar>
+</Shell>

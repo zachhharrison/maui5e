@@ -1,10 +1,10 @@
-using System.Text.Json.Serialization;
 using CommunityToolkit.Maui.Markup;
 using GraphQL;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
+using maui5e.Models;
 
-namespace maui5e;
+namespace maui5e.Views;
 
 public class ClassPage : ContentPage
 {
@@ -33,7 +33,7 @@ public class ClassPage : ContentPage
                 
                 new Button
                     {
-                        Text = "Get Wizard Metadata",
+                        Text = "Get Metadata",
                     }
                     .Font(bold:true)
                     .CenterHorizontal()
@@ -77,21 +77,4 @@ public class ClassPage : ContentPage
             .Description
             .FirstOrDefault() ?? "No description";
     }
-}
-
-public struct Data
-{
-    public Class Class { get; set; }
-}
-public struct Class
-{
-    public string Name { get; set; }
-    public List<Subclasses> Subclasses {get; set; }
-}
-
-public struct Subclasses
-{
-    public string Name { get; set; }
-    [JsonPropertyName("desc")]
-    public List<string> Description { get; set; }
 }

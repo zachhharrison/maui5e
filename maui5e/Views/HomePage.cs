@@ -1,6 +1,6 @@
 using CommunityToolkit.Maui.Markup;
 
-namespace maui5e;
+namespace maui5e.Views;
 
 public class HomePage : ContentPage
 {

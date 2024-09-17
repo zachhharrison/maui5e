@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace maui5e;
+namespace maui5eClient;
 
 public class Program
 {

@@ -1,4 +1,4 @@
-namespace maui5e.Models;
+namespace maui5eClient.Models;
 
 public struct Data
 {

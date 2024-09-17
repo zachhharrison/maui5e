@@ -2,9 +2,9 @@ using CommunityToolkit.Maui.Markup;
 using GraphQL;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
-using maui5e.Models;
+using maui5eClient.Models;
 
-namespace maui5e.Views;
+namespace maui5eClient.Views;
 
 public class ClassPage : ContentPage
 {

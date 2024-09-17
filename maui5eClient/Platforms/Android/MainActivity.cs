@@ -2,7 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 
-namespace maui5e;
+namespace maui5eClient;
 
 [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true,
     ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode |

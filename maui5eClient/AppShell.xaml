@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="maui5e.AppShell"
+    x:Class="maui5eClient.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="using:maui5e.Views"
+    xmlns:views="using:maui5eClient.Views"
     FlyoutBehavior="Disabled">
 
     <TabBar>
-        <ShellContent
-            Title="Home Page"
-            ContentTemplate="{DataTemplate views:HomePage}"
-            Route="HomePage" />
         <ShellContent
             Title="Class Page"
             ContentTemplate="{DataTemplate views:ClassPage}"

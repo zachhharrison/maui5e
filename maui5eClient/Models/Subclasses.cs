@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace maui5e.Models;
+namespace maui5eClient.Models;
 
 public struct Subclasses
 {

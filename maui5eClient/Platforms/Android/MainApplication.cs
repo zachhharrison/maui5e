@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace maui5e;
+namespace maui5eClient;
 
 [Application]
 public class MainApplication : MauiApplication

@@ -1,4 +1,4 @@
-﻿namespace maui5e;
+﻿namespace maui5eClient;
 
 public partial class App
 {

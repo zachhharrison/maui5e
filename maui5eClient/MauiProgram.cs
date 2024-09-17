@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui.Markup;
-using maui5e.Extensions;
+using maui5eClient.Extensions;
 
-namespace maui5e;
+namespace maui5eClient;
 
 public static class MauiProgram
 {

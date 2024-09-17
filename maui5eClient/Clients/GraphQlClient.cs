@@ -2,7 +2,7 @@ using GraphQL;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
 
-namespace maui5e.Clients;
+namespace maui5eClient.Clients;
 
 public class GraphQlClient
 {

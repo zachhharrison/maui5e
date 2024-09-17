@@ -4,3 +4,4 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 maui5e.sln.DotSettings.user
+*.idea

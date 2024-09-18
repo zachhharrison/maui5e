@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Maui.Markup;
-using Maui5eClient.Extensions;
+﻿using Maui5eClient.Extensions;
 
 namespace Maui5eClient;
 
@@ -10,7 +9,6 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMauiCommunityToolkitMarkup()
             .RegisterFonts()
             .RegisterHandlers()
             .RegisterServices();

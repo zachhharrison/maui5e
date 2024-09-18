@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Maui5eClient.Models;
 
-public struct Subclasses
+public class Subclasses
 {
     public string Name { get; set; }
     [JsonPropertyName("desc")]

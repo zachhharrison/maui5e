@@ -52,7 +52,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="CommunityToolkit.Maui.Markup" Version="4.1.0" />
       <PackageReference Include="GraphQL.Client" Version="6.1.0" />
       <PackageReference Include="GraphQL.Client.Serializer.SystemTextJson" Version="6.1.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0-rc.1.24431.7" />

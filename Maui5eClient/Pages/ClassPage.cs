@@ -1,15 +1,18 @@
 using CommunityToolkit.Maui.Markup;
 using GraphQL;
-using GraphQL.Client.Http;
-using GraphQL.Client.Serializer.SystemTextJson;
+using GraphQL.Client.Abstractions;
 using Maui5eClient.Models;
 
 namespace Maui5eClient.Pages;
 
 public class ClassPage : ContentPage
 {
-    public ClassPage()
+    private readonly IGraphQLClient _graphQlClient;
+    
+    public ClassPage(IGraphQLClient graphQlClient)
     {
+        _graphQlClient = graphQlClient; 
+        
         var scrollView = new ScrollView();
         var verticalStackLayout = new VerticalStackLayout
         {
@@ -33,7 +36,7 @@ public class ClassPage : ContentPage
                 
                 new Button
                     {
-                        Text = "Get Metadata",
+                        Text = "Get Subclasses",
                     }
                     .Font(bold:true)
                     .CenterHorizontal()
@@ -50,26 +53,23 @@ public class ClassPage : ContentPage
 
     private async Task<string> GetClassFromGraphQl(string className)
     {
-        const string uri = "https://www.dnd5eapi.co/graphql";
-        using var graphQlClient = new GraphQLHttpClient(uri, new SystemTextJsonSerializer());
-        
         var classRequest = new GraphQLRequest {
             Query = """
-                    query Class($index: String){
-                      class(index: $index) {
-                        subclasses {
-                          name
-                          desc
+                       query Class($index: String){
+                          class(index: $index) {
+                            subclasses {
+                              name
+                              desc
+                            }
+                            name
+                          }
                         }
-                        name
-                      }
-                    }
                     """,
             OperationName = "Class",
             Variables = new { index = className },
         };
         
-        var graphQlResponse = await graphQlClient
+        var graphQlResponse = await _graphQlClient
             .SendQueryAsync<Data>(classRequest);
         return graphQlResponse.Data
             .Class.Subclasses

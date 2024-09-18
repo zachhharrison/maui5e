@@ -3,13 +3,13 @@
     x:Class="Maui5eClient.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="using:Maui5eClient.Pages"
+    xmlns:local="using:Maui5eClient.Pages"
     FlyoutBehavior="Disabled">
 
     <TabBar>
         <ShellContent
             Title="Class Page"
-            ContentTemplate="{DataTemplate views:ClassPage}"
+            ContentTemplate="{DataTemplate local:ClassPage}"
             Route="ClassPage" />
     </TabBar>
 </Shell>

@@ -1,6 +1,6 @@
 namespace Maui5eClient.Models;
 
-public struct Data
+public class Data
 {
-    public Class Class { get; set; }
+    public List<Class> Classes { get; set; }
 }

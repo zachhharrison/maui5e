@@ -2,6 +2,7 @@ using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
 using Maui5eClient.Pages;
+using Maui5eClient.ViewModels;
 
 namespace Maui5eClient.Extensions;
 
@@ -21,10 +22,11 @@ public static class RegisterServicesExtension
             })
             .AddTypedClient<IGraphQLClient>(httpClient => 
                 new GraphQLHttpClient(httpClient.BaseAddress, new SystemTextJsonSerializer()));
-
-        builder.Services.AddSingleton<ClassPage>();
+        
+        builder.Services.AddSingleton<DataViewModel>();
         // Transient objects lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services.
         //builder.Services.AddTransient();  
+        builder.Services.AddTransient<ClassPage>();
         return builder;
     }
 }

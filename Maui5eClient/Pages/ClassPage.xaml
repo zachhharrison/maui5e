@@ -4,45 +4,120 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Maui5eClient.Pages.ClassPage"
-             Title="5e Classes">
-    
-    <StackLayout Padding="10">
-        <CollectionView SelectionMode="None"
-                        x:Name="CollectionView">
+             Title="5e Classes"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <!-- Main Content Wrapper -->
+    <Grid Padding="20" RowDefinitions="Auto, *">
         
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <toolkit:Expander>
-                        <toolkit:Expander.Header>
-                            <Label  Text="{Binding Path=ClassName}"
-                                    FontAttributes= "Bold"
-                                    FontSize="18"/>
-                        </toolkit:Expander.Header>
-                        
-                        <!-- Expander content to display subclasses -->
-                        <toolkit:Expander.Content>
-                            <!-- Nested CollectionView for subclasses -->
-                            <CollectionView ItemsSource="{Binding Subclasses}" SelectionMode="None">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout>
-                                            <!-- Display each subclass name -->
-                                            <Label Text="{Binding SubclassName}" FontAttributes="Bold" FontSize="16" />
-                                            <StackLayout BindableLayout.ItemsSource="{Binding Description}">
-                                                <BindableLayout.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Label Text="{Binding}" FontSize="14" TextColor="Gray" />
-                                                    </DataTemplate>
-                                                </BindableLayout.ItemTemplate>
+        <!-- Header Section -->
+        <StackLayout Grid.Row="0" Orientation="Vertical" Spacing="5">
+            <Label Text="Dungeons &amp; Dragons Classes"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource PrimaryTextColor}"
+                   HorizontalOptions="Center" />
+
+            <!-- Subtitle for context -->
+            <Label Text="Select a class to view its details"
+                   FontSize="14"
+                   TextColor="{DynamicResource SecondaryTextColor}"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <!-- ActivityIndicator in the center of the screen -->
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Color="{DynamicResource AccentColor}" />
+            
+            <ScrollView>
+                <!-- Class CollectionView -->
+                <CollectionView ItemsSource="{Binding Classes}"
+                                IsVisible="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+                                SelectionMode="None"
+                                Margin="0, 20, 0, 0">
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Class Card -->
+                            <Frame HasShadow="True" CornerRadius="8" Padding="10" Margin="0, 5"
+                                   BackgroundColor="{DynamicResource CardBackgroundColor}"
+                                   BorderColor="{DynamicResource BorderColor}">
+                                
+                                <StackLayout>
+                                    <!-- Expander for Class -->
+                                    <toolkit:Expander>
+                                        <toolkit:Expander.Header>
+                                            <!-- Class Header with Icon -->
+                                            <Grid ColumnDefinitions="Auto, *" Padding="0, 5">
+                                                <Image Source="class_icon.png"
+                                                       WidthRequest="24"
+                                                       HeightRequest="24"
+                                                       VerticalOptions="Center" />
+                                                <Label Text="{Binding ClassName}"
+                                                       Grid.Column="1"
+                                                       FontAttributes="Bold"
+                                                       FontSize="18"
+                                                       TextColor="{DynamicResource PrimaryTextColor}"
+                                                       VerticalOptions="Center" />
+                                            </Grid>
+                                        </toolkit:Expander.Header>
+                                        
+                                        <!-- Expander content to display subclasses -->
+                                        <toolkit:Expander.Content>
+                                            <!-- Subclasses Section -->
+                                            <StackLayout Padding="5">
+                                                <Label Text="Subclasses"
+                                                       FontAttributes="Bold"
+                                                       FontSize="16"
+                                                       TextColor="{DynamicResource AccentColor}" />
+
+                                                <!-- Use BindableLayout for Subclasses -->
+                                                <StackLayout BindableLayout.ItemsSource="{Binding Subclasses}">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Frame HasShadow="True" CornerRadius="8" Padding="10" Margin="0, 5"
+                                                                   BackgroundColor="{DynamicResource SubclassCardBackgroundColor}"
+                                                                   BorderColor="{DynamicResource BorderColor}">
+                                                                
+                                                                <StackLayout>
+                                                                    <!-- Display each subclass name -->
+                                                                    <Label Text="{Binding SubclassName}" 
+                                                                           FontAttributes="Bold" 
+                                                                           FontSize="16"
+                                                                           TextColor="{DynamicResource PrimaryTextColor}" />
+
+                                                                    <!-- Display subclass description -->
+                                                                    <StackLayout BindableLayout.ItemsSource="{Binding Description}" 
+                                                                                 Padding="5, 0">
+                                                                        <BindableLayout.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <Label Text="{Binding}"
+                                                                                       FontSize="14"
+                                                                                       TextColor="{DynamicResource SecondaryTextColor}" />
+                                                                            </DataTemplate>
+                                                                        </BindableLayout.ItemTemplate>
+                                                                    </StackLayout>
+                                                                </StackLayout>
+                                                            </Frame>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+
                                             </StackLayout>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </toolkit:Expander.Content>
-                    </toolkit:Expander>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+                                        </toolkit:Expander.Content>
+                                    </toolkit:Expander>
+                                </StackLayout>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </Grid>
 </ContentPage>

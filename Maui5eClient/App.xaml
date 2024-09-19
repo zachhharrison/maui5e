@@ -1,7 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Maui5eClient"
+             xmlns:extensions="clr-namespace:Maui5eClient.Extensions"
              x:Class="Maui5eClient.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +9,14 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <extensions:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <Color x:Key="PrimaryTextColor">#333333</Color>
+            <Color x:Key="SecondaryTextColor">#666666</Color>
+            <Color x:Key="AccentColor">#5DADE2</Color>
+            <Color x:Key="CardBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="SubclassCardBackgroundColor">#F8F9F9</Color>
+            <Color x:Key="BorderColor">#D5D8DC</Color>
+            <Color x:Key="PageBackgroundColor">#F4F6F7</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

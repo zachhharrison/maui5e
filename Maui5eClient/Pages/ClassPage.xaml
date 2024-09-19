@@ -3,13 +3,15 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Maui5eClient.Pages.ClassPage"
              Title="5e Classes"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
             <!-- Header -->
             <VerticalStackLayout Spacing="5">
-                <Label Text="Dungeons &amp; Dragons Classes"
+                <Label Text="D&amp;D Classes"
                        FontSize="24"
                        FontAttributes="Bold"
                        TextColor="{DynamicResource PrimaryTextColor}"
@@ -31,13 +33,22 @@
                                BorderColor="{DynamicResource BorderColor}">
                             <toolkit:Expander>
                                 <toolkit:Expander.Header>
-                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                        <Image Source="class_icon.png"
+                                               WidthRequest="24"
+                                               HeightRequest="24"
+                                               VerticalOptions="Center" 
+                                               IsVisible="False"/>
                                         <Label Text="{Binding ClassName}"
                                                Grid.Column="1"
                                                FontAttributes="Bold"
                                                FontSize="18"
                                                TextColor="{DynamicResource PrimaryTextColor}"
-                                               VerticalOptions="Center" />
+                                               VerticalOptions="Center" 
+                                               HorizontalOptions="Center"/>
+                                        <BoxView Grid.Column="2" 
+                                                 WidthRequest="24" 
+                                                 IsVisible="False" />
                                     </Grid>
                                 </toolkit:Expander.Header>
                                 <toolkit:Expander.Content>

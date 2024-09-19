@@ -19,7 +19,7 @@ public class Class : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ClassName)));
         }
     }
-    public List<Subclasses> Subclasses {get; set; }
+    public List<Subclass> Subclasses {get; set; }
     
     public event PropertyChangedEventHandler PropertyChanged;
 

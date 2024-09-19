@@ -18,12 +18,8 @@ public partial class ClassPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        collectionView.ItemsSource = await GetAllClassesAsync();
-    }
-
-    private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        Debug.WriteLine("---> Item changed clicked!");
+        var classes = await GetAllClassesAsync();
+        CollectionView.ItemsSource = classes;
     }
 
     private async Task<List<Class>> GetAllClassesAsync()
@@ -34,6 +30,10 @@ public partial class ClassPage : ContentPage
                         classes(order: { by: NAME }) {
                             name
                             index
+                            subclasses {
+                                name 
+                                desc
+                            }
                         }
                     }
                     """

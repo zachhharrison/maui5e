@@ -21,10 +21,9 @@ public static class RegisterServicesExtension
             })
             .AddTypedClient<IGraphQLClient>(httpClient => 
                 new GraphQLHttpClient(httpClient.BaseAddress, new SystemTextJsonSerializer()));
-
-        builder.Services.AddSingleton<ClassPage>();
         // Transient objects lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services.
         //builder.Services.AddTransient();  
+        builder.Services.AddSingleton<ClassPage>();
         return builder;
     }
 }

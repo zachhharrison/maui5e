@@ -8,14 +8,38 @@
     
     <StackLayout Padding="10">
         <CollectionView SelectionMode="None"
-                        ItemsSource="{Binding Classes}">
+                        x:Name="CollectionView">
         
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <toolkit:Expander Header="{Binding ClassName}">
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Index}" FontSize="Medium" />
-                        </StackLayout>
+                    <toolkit:Expander>
+                        <toolkit:Expander.Header>
+                            <Label  Text="{Binding Path=ClassName}"
+                                    FontAttributes= "Bold"
+                                    FontSize="18"/>
+                        </toolkit:Expander.Header>
+                        
+                        <!-- Expander content to display subclasses -->
+                        <toolkit:Expander.Content>
+                            <!-- Nested CollectionView for subclasses -->
+                            <CollectionView ItemsSource="{Binding Subclasses}" SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <!-- Display each subclass name -->
+                                            <Label Text="{Binding SubclassName}" FontAttributes="Bold" FontSize="16" />
+                                            <StackLayout BindableLayout.ItemsSource="{Binding Description}">
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Label Text="{Binding}" FontSize="14" TextColor="Gray" />
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </toolkit:Expander.Content>
                     </toolkit:Expander>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

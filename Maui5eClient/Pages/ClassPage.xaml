@@ -1,6 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:Maui5eClient.Models"
              x:Class="Maui5eClient.Pages.ClassPage"
              Title="5e Classes"
              NavigationPage.HasNavigationBar="False"
@@ -10,12 +11,23 @@
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
             <!-- Header -->
-            <VerticalStackLayout Spacing="5">
-                <Label Text="D&amp;D Classes"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       TextColor="{DynamicResource PrimaryTextColor}"
-                       HorizontalOptions="Center" />
+            <VerticalStackLayout Spacing="10">
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label Text="DUNGEONS"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="{DynamicResource PrimaryTextColor}"
+                           VerticalOptions="Center" />
+                    <Image Source="dungeons_and_dragons.png"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           VerticalOptions="Center" />
+                    <Label Text="DRAGONS"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="{DynamicResource PrimaryTextColor}"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
                 <Label Text="Select a class to view its details"
                        FontSize="14"
                        TextColor="{DynamicResource SecondaryTextColor}"
@@ -45,7 +57,8 @@
                                                FontSize="18"
                                                TextColor="{DynamicResource PrimaryTextColor}"
                                                VerticalOptions="Center" 
-                                               HorizontalOptions="Center"/>
+                                               HorizontalOptions="Center"
+                                               x:DataType="models:Class"/>
                                         <BoxView Grid.Column="2" 
                                                  WidthRequest="24" 
                                                  IsVisible="False" />
@@ -57,7 +70,7 @@
                                                FontAttributes="Bold"
                                                FontSize="16"
                                                TextColor="{DynamicResource AccentColor}" />
-                                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Subclasses}" Spacing="10">
+                                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Subclasses}" Spacing="10" x:DataType="models:Class">
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
                                                     <Frame HasShadow="True" 
@@ -69,8 +82,9 @@
                                                             <Label Text="{Binding SubclassName}" 
                                                                    FontAttributes="Bold" 
                                                                    FontSize="16"
-                                                                   TextColor="{DynamicResource PrimaryTextColor}" />
-                                                            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Description}" Spacing="2">
+                                                                   TextColor="{DynamicResource PrimaryTextColor}" 
+                                                                   x:DataType="models:Subclass"/>
+                                                            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Description}" Spacing="2" x:DataType="models:Subclass">
                                                                 <BindableLayout.ItemTemplate>
                                                                     <DataTemplate>
                                                                         <Label Text="{Binding}"

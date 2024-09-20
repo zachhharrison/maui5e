@@ -11,9 +11,20 @@ public class ClassViewModel : INotifyPropertyChanged
     private readonly IGraphQLClient _graphQlClient;
 
     // ObservableCollection to bind to the CollectionView in the XAML
-    public ObservableCollection<Class> Classes { get; set; } = new ObservableCollection<Class>();
+    public ObservableCollection<Class> Classes
+    {
+        get => _classes;
+        set
+        {
+            if (Equals(value, _classes)) return;
+            _classes = value;
+            OnPropertyChanged(nameof(Classes));
+        }
+    }
 
     private bool _isLoading;
+    private ObservableCollection<Class> _classes = [];
+
     public bool IsLoading
     {
         get => _isLoading;
@@ -27,7 +38,7 @@ public class ClassViewModel : INotifyPropertyChanged
     public ClassViewModel(IGraphQLClient graphQlClient)
     {
         _graphQlClient = graphQlClient;
-        LoadClassesAsync();
+        _ = LoadClassesAsync();
     }
 
     public async Task LoadClassesAsync()

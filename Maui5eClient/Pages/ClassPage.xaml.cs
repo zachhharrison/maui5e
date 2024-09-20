@@ -18,10 +18,10 @@ public partial class ClassPage : ContentPage
         BindingContext = _viewModel;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
         // Optionally load data here if needed
-        _viewModel.LoadClassesAsync();
+        await _viewModel.LoadClassesAsync();
     }
 }

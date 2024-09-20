@@ -1,46 +1,27 @@
-using System.Diagnostics;
 using GraphQL;
 using GraphQL.Client.Abstractions;
 using Maui5eClient.Models;
+using Maui5eClient.ViewModels;
 
 namespace Maui5eClient.Pages;
 
 public partial class ClassPage : ContentPage
 {
-    private readonly IGraphQLClient _graphQlClient;
-    
+    private readonly ClassViewModel _viewModel;
+
     public ClassPage(IGraphQLClient graphQlClient)
     {
         InitializeComponent();
-        _graphQlClient = graphQlClient; 
+
+        // Initialize the ViewModel and set it as the BindingContext
+        _viewModel = new ClassViewModel(graphQlClient);
+        BindingContext = _viewModel;
     }
-    
+
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var classes = await GetAllClassesAsync();
-        CollectionView.ItemsSource = classes;
-    }
-
-    private async Task<List<Class>> GetAllClassesAsync()
-    {
-        var classRequest = new GraphQLRequest {
-            Query = """
-                       query Classes {
-                        classes(order: { by: NAME }) {
-                            name
-                            index
-                            subclasses {
-                                name 
-                                desc
-                            }
-                        }
-                    }
-                    """
-        };
-        
-        var graphQlResponse = await _graphQlClient
-            .SendQueryAsync<Data>(classRequest);
-        return graphQlResponse.Data.Classes;
+        // Optionally load data here if needed
+        await _viewModel.LoadClassesAsync();
     }
 }
